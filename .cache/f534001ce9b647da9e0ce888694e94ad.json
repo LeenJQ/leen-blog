@@ -1,1 +1,0 @@
-{"dependencies":[{"name":"./markdown","loc":{"line":2,"column":27}}],"generated":{"js":"// super simple module for the most common nodejs use case.\nexports.markdown = require(\"./markdown\");\nexports.parse = exports.markdown.toHTML;\n"},"hash":"e3d404b283d3e5f6b5487815cae38741"}
