@@ -2575,7 +2575,17 @@ function merge_text_nodes( jsonml ) {
 exports.markdown = require("./markdown");
 exports.parse = exports.markdown.toHTML;
 
-},{"./markdown":6}],4:[function(require,module,exports) {
+},{"./markdown":6}],11:[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var foo = exports.foo = 'bar';
+setTimeout(function () {
+  return exports.foo = foo = 'baz';
+}, 500);
+},{}],4:[function(require,module,exports) {
 "use strict";
 
 var _test = require("./test.md");
@@ -2584,14 +2594,19 @@ var _test2 = _interopRequireDefault(_test);
 
 var _markdown = require("markdown");
 
+var _m = require("./m.js");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-console.log();
-
+console.log(1);
+console.log(_m.foo);
+setTimeout(function () {
+  console.log(_m.foo);
+}, 10000);
 var app = document.getElementById("app");
 var blog = _markdown.markdown.toHTML(_test2.default);
 app.innerHTML = blog;
-},{"./test.md":1,"markdown":5}],0:[function(require,module,exports) {
+},{"./test.md":1,"markdown":5,"./m.js":11}],0:[function(require,module,exports) {
 var global = (1, eval)('this');
 var OldModule = module.bundle.Module;
 function Module() {
@@ -2609,7 +2624,7 @@ function Module() {
 module.bundle.Module = Module;
 
 if (!module.bundle.parent && typeof WebSocket !== 'undefined') {
-  var ws = new WebSocket('ws://' + window.location.hostname + ':64537/');
+  var ws = new WebSocket('ws://' + window.location.hostname + ':56943/');
   ws.onmessage = function(event) {
     var data = JSON.parse(event.data);
 
